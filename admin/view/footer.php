@@ -1,7 +1,7 @@
 <div class="zippylinks">
     <?php if ($action !== 'list_vehicles') { ?>
         <?php 
-        // or this complex way :)
+        // or this complex way if no default action :)
         /*
         $url = $_SERVER['REQUEST_URI'];
         $pos = strpos($url,'_id');
