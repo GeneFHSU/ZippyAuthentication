@@ -1,9 +1,12 @@
 <div class="zippylinks">
-    <?php 
+    <?php if ($action !== 'list_vehicles') { ?>
+        <?php 
+        // or this complex way :)
+        /*
         $url = $_SERVER['REQUEST_URI'];
         $pos = strpos($url,'_id');
         if (!$pos && substr($_SERVER['REQUEST_URI'], -6) !== 'admin/') { 
-    ?>
+        */?> 
     <p><a href=".">View Full Vehicle List</a></p>
     <?php } ?>
     <?php if ($action !== 'show_add_form') { ?>
