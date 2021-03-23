@@ -53,9 +53,11 @@
         <section id="sortBy" class="sortBy">
             <div>
                 <span>Sort by: </span>
-                <input type="radio" id="sortByPrice" name="sort" value="price" checked>
+                <input type="radio" id="sortByPrice" name="sort" value="price" 
+                    <?php if ($sort === 'price') echo 'checked' ?>>
                 <label for="sortByPrice">Price</label>
-                <input type="radio" id="sortByYear" name="sort" value="year">
+                <input type="radio" id="sortByYear" name="sort" value="year" 
+                    <?php if ($sort === 'year') echo 'checked' ?>>
                 <label for="sortByYear">Year</label>
                 <input type="submit" value="Submit" class="button blue button-slim">
             </div>
