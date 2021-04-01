@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+
 <nav>
     <form action="." method="get" id="make_selection">
         <section id="dropmenus" class="dropmenus">
