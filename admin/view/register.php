@@ -10,7 +10,7 @@
                     </ul>
                 </div>
             <?php } ?>
-            <form action="/admin/index.php" method="POST" id="register">
+            <form action="." method="POST" id="register">
                 <input type="hidden" name="action" value="register">
                 <div><label for="username">Username:</label></div>
                 <div><input type="text" id="username" name="username" maxlength="255" required></div>

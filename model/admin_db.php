@@ -41,4 +41,9 @@ function username_exists($username){
                 WHERE username = :username';
     $statement = $db->prepare($query);
     $statement->bindValue(':username',$username);
+    $statement->execute();
+    $row = $statement->fetchColumn();
+    $statement->closeCursor();
+    return $row;
+
 }

@@ -76,4 +76,9 @@
         $action === 'delete_vehicle' ||
         $action === 'list_vehicles') include('controllers/vehicles.php');
 
-    include("controllers/admin.php");
+    if($action == "login" ||
+        $action == "show_login" ||
+        $action == "register" ||
+        $action == "show_register" ||
+        $action == "logout")
+        include('controllers/admin.php');

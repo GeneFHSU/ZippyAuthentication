@@ -31,6 +31,10 @@ and redirect to controller with "list_vehicles" action
 
 switch ($action){
     case 'logout':
+        $_SESSION = array();
+        session_destroy();
+        $login_message = "You've been logged out.";
+        include('view/login.php');
         break;
     case 'show_register':
         include 'view/register.php';
@@ -39,15 +43,12 @@ switch ($action){
         include 'view/login.php';
         break;
     case 'login':
-
-        if(!empty($username) && !empty($password) && (is_valid_admin_login($username, $password)))
-        {
+        if (is_valid_admin_login($username, $password)){
             $_SESSION['is_valid_admin'] = true;
-                include('view/vehicle_list.php');
-        }
-        else {
-            $login_message = "Incorrect Login / Login Required.";
-            include 'view/login.php';
+            header('location: .?action=list_vehicles');/*also redirect to controller with "list_vehicles" action*/
+        } else {
+            $login_message = 'Incorrect Login / Login Required.';
+            include('view/login.php');
         }
         break;
     case 'logout':
@@ -56,13 +57,15 @@ switch ($action){
         $login_message = "You have been logged out.";
         include('view/login.php');
         break;
-    case 'register':
-        include ('util/valid_register.php');
-        if(valid_registration($username,$password,$confirm_password))
-            echo "valid";
-        else
-            include 'view/register.php';
+    case "register":
+        include('util/valid_register.php');
+        $errors = valid_registration($username, $password, $confirm_password);
+        if($errors) include('view/register.php');
+        else{
+            add_admin($username, $password);
+            $_SESSION['is_valid_admin'] = true;
+            header('location: .?action=list_vehicles');
+        }
         break;
-
 }
 ?>
