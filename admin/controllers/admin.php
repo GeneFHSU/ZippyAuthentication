@@ -1,4 +1,5 @@
 <?php
+/*session_start();*/
 /*/admin/controllers/admin.php
 
 In admin.php subcontroller: 5 action cases
@@ -25,6 +26,9 @@ else call add_admin function (pg 703)
 and set is_valid_admin session variable
 and redirect to controller with "list_vehicles" action
 */
+//if(!isset($_SESSION['is_valid_admin']))
+//    $action
+
 switch ($action){
     case 'logout':
         break;
@@ -35,7 +39,29 @@ switch ($action){
         include 'view/login.php';
         break;
     case 'login':
-        include 'view/login.php';
+
+        if(!empty($username) && !empty($password) && (is_valid_admin_login($username, $password)))
+        {
+            $_SESSION['is_valid_admin'] = true;
+                include('view/vehicle_list.php');
+        }
+        else {
+            $login_message = "Incorrect Login / Login Required.";
+            include 'view/login.php';
+        }
+        break;
+    case 'logout':
+        $_SESSION = array();//Clear all session data from memory
+        session_destroy(); //Clean up the session ID
+        $login_message = "You have been logged out.";
+        include('view/login.php');
+        break;
+    case 'register':
+        include ('util/valid_register.php');
+        if(valid_registration($username,$password,$confirm_password))
+            echo "valid";
+        else
+            include 'view/register.php';
         break;
 
 }

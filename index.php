@@ -96,6 +96,7 @@
                 });
             }
 
+
             include('view/vehicle_list.php');
     }
 
