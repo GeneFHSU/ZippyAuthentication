@@ -51,7 +51,8 @@
     $confirm_password = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_STRING);
 
     $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
-    if (!$action) {
+
+if (!$action) {
         $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
         if (!$action) {
             $action = 'list_vehicles';
