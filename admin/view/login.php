@@ -4,7 +4,7 @@
         <div style="color: red; font-weight: bold;"><?=$login_message?></div>
     <?php } ?>
     <div style="color: goldenrod; font-weight: bold;">Please fill in your credentials to log in.</div>
-    <form action="/admin/index.php" method="POST" id="login">
+    <form action="." method="POST" id="login">
         <input type="hidden" name="action" value="login">
         <div><label for="username">Username:</label></div>
         <div><input type="text" id="username" name="username"maxlength="255" required></div>
@@ -13,4 +13,10 @@
         <div><input type="submit" value="Sign In" class="button blue button-slim" maxlength="15"></div>
     </form>
 </section>
-<?php include('footer.php') ?>
+<footer>
+    <p>&copy; <?= date("Y"); ?> Zippy Used Autos</p>
+</footer>
+</main>
+</body>
+
+</html>

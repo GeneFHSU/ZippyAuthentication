@@ -15,6 +15,9 @@ function add_admin ($username, $password){
 
 //page 703
 function is_valid_admin_login($username, $password){
+
+    if((empty($username)) || empty($password)) return false;
+
     global $db;
     $hash = password_hash($password,PASSWORD_DEFAULT);
     $query = 'SELECT password from administrators
